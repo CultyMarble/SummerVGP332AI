@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{1373ccc1-5b4a-4cd4-a9a9-af5f47d91677}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2f0f2b6c-9cbe-4ecc-9b17-0ac8f28c0fe1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Pre-compiled">
+      <UniqueIdentifier>{9ede8b29-1a85-432f-aa8b-4fb60d863c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\Pathing">
+      <UniqueIdentifier>{ad52c57a-b026-48c3-b1fa-68d72591a439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Pathing">
+      <UniqueIdentifier>{11262c22-524b-4a59-8907-ada571a906f7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\AI.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Common.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pch.h">
+      <Filter>src\Pre-compiled</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\GridBasedGraph.h">
+      <Filter>inc\Pathing</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\BFS.h">
+      <Filter>inc\Pathing</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\DFS.h">
+      <Filter>inc\Pathing</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Dijkstra.h">
+      <Filter>inc\Pathing</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\AStar.h">
+      <Filter>inc\Pathing</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\pch.cpp">
+      <Filter>src\Pre-compiled</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GridBasedGraph.cpp">
+      <Filter>src\Pathing</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BFS.cpp">
+      <Filter>src\Pathing</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DFS.cpp">
+      <Filter>src\Pathing</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dijkstra.cpp">
+      <Filter>src\Pathing</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AStar.cpp">
+      <Filter>src\Pathing</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
