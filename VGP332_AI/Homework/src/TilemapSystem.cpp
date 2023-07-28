@@ -235,78 +235,78 @@ namespace tms
         return path;
     }
 
-    //Path TilemapManager::FindPathDijkstra(int startX, int startY, int endX, int endY)
-    //{
-    //    Path path;
-    //    Dijkstra dijkstra;
+    Path TilemapManager::FindPathDijkstra(int startX, int startY, int endX, int endY)
+    {
+        Path path;
+        Dijkstra dijkstra;
 
-    //    auto getCost = [](const GridBasedGraph::Node* node, GridBasedGraph::Node* neighbor)->float
-    //    {
-    //        // if neighbor >>
-    //        if (node->column != neighbor->column && node->row != neighbor->row)
-    //        {
-    //            return 2.0f;
-    //        }
+        auto getCost = [](const GridBasedGraph::Node* node, const GridBasedGraph::Node* neighbor)->float
+        {
+            // if neighbor >>
+            if (node->column != neighbor->column && node->row != neighbor->row)
+            {
+                return 2.1f;
+            }
 
-    //        return 1.0f;
-    //    };
+            return 1.0f;
+        };
 
-    //    if (dijkstra.Run(mGraph, startX, startY, endX, endY, getCost))
-    //    {
-    //        const auto& closedList = dijkstra.GetClosedList();
-    //        auto node = closedList.back();
+        if (dijkstra.Run(mGraph, startX, startY, endX, endY, getCost))
+        {
+            const auto& closedList = dijkstra.GetClosedList();
+            auto node = closedList.back();
 
-    //        while (node != nullptr)
-    //        {
-    //            path.push_back(GetPixelPosition(node->column, node->row));
-    //            node = node->parent;
-    //        }
+            while (node != nullptr)
+            {
+                path.push_back(GetPixelPosition(node->column, node->row));
+                node = node->parent;
+            }
 
-    //        std::reverse(path.begin(), path.end());
-    //    }
+            std::reverse(path.begin(), path.end());
+        }
 
-    //    return path;
-    //}
+        return path;
+    }
 
-    //Path TilemapManager::FindPathAStar(int startX, int startY, int endX, int endY)
-    //{
-    //    Path path;
-    //    AStar aStar;
+    Path TilemapManager::FindPathAStar(int startX, int startY, int endX, int endY)
+    {
+        Path path;
+        AStar aStar;
 
-    //    auto getCost = [](const GridBasedGraph::Node* node, GridBasedGraph::Node* neighbor)->float
-    //    {
-    //        // if neighbor >>
-    //        if (node->column != neighbor->column && node->row != neighbor->row)
-    //        {
-    //            return 2.5f;
-    //        }
+        auto getCost = [](const GridBasedGraph::Node* node, const GridBasedGraph::Node* neighbor)->float
+        {
+            // if neighbor >>
+            if (node->column != neighbor->column && node->row != neighbor->row)
+            {
+                return 1.14f;
+            }
 
-    //        return 1.0f;
-    //    };
+            return 1.0f;
+        };
 
-    //    auto getHeuristic = [](const GridBasedGraph::Node* neighbor, GridBasedGraph::Node* endNode)->float
-    //    {
-    //        float D = 1.0f;
-    //        float dx = abs(neighbor->column - endNode->column);
-    //        float dy = abs(neighbor->row - endNode->row);
+        auto getHeuristic = [](const GridBasedGraph::Node* neighbor, const GridBasedGraph::Node* endNode)->float
+        {
+            float D = 1.0f;
+            float dx = abs(neighbor->column - endNode->column);
+            float dy = abs(neighbor->row - endNode->row);
 
-    //        return D * (dx + dy);
-    //    };
+            return D * (dx + dy);
+        };
 
-    //    if (aStar.Run(mGraph, startX, startY, endX, endY, getCost, getHeuristic))
-    //    {
-    //        const auto& closedList = aStar.GetClosedList();
-    //        auto node = closedList.back();
+        if (aStar.Run(mGraph, startX, startY, endX, endY, getCost, getHeuristic))
+        {
+            const auto& closedList = aStar.GetClosedList();
+            auto node = closedList.back();
 
-    //        while (node != nullptr)
-    //        {
-    //            path.push_back(GetPixelPosition(node->column, node->row));
-    //            node = node->parent;
-    //        }
+            while (node != nullptr)
+            {
+                path.push_back(GetPixelPosition(node->column, node->row));
+                node = node->parent;
+            }
 
-    //        std::reverse(path.begin(), path.end());
-    //    }
+            std::reverse(path.begin(), path.end());
+        }
 
-    //    return path;
-    //}
+        return path;
+    }
 }

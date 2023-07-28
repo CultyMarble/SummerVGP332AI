@@ -39,6 +39,8 @@ int main(void)
         /*==================================================================================
             UPDATE GAME FRAME
         ==================================================================================*/
+
+        //BFS Test 
         if (IsKeyDown(KEY_ONE))
         {
             path = TilemapManager::Get()->FindPathBFS(startX, startY, 5, 5);
@@ -49,6 +51,7 @@ int main(void)
             path = TilemapManager::Get()->FindPathBFS(startX, startY, 8, 8);
         }
 
+        // DFS Test
         if (IsKeyDown(KEY_THREE))
         {
             path = TilemapManager::Get()->FindPathDFS(startX, startY, 5, 5);
@@ -59,15 +62,27 @@ int main(void)
             path = TilemapManager::Get()->FindPathDFS(startX, startY, 8, 8);
         }
 
-        //if (IsKeyDown(KEY_FIVE))
-        //{
-        //    path = TilemapManager::Get()->FindPathDijkstra(startX, startY, 8, 8);
-        //}
+        // Dijkstra
+        if (IsKeyDown(KEY_FIVE))
+        {
+            path = TilemapManager::Get()->FindPathDijkstra(startX, startY, 5, 5);
+        }
 
-        //if (IsKeyDown(KEY_SEVEN))
-        //{
-        //    path = TilemapManager::Get()->FindPathAStar(startX, startY, 5, 5);
-        //}
+        if (IsKeyDown(KEY_SIX))
+        {
+            path = TilemapManager::Get()->FindPathDijkstra(startX, startY, 8, 8);
+        }
+
+        // AStar
+        if (IsKeyDown(KEY_SEVEN))
+        {
+            path = TilemapManager::Get()->FindPathAStar(startX, startY, 5, 5);
+        }
+
+        if (IsKeyDown(KEY_EIGHT))
+        {
+            path = TilemapManager::Get()->FindPathAStar(startX, startY, 8, 8);
+        }
 
         /*==================================================================================
             UPDATE DRAW FRAME
