@@ -64,6 +64,8 @@ namespace tms
         Path FindPathDijkstra(int startX, int startY, int endX, int endY);
         Path FindPathAStar(int startX, int startY, int endX, int endY);
 
+        const AI::GridBasedGraph::Node* GetClosestNode(int x, int y) const;
+
     private:
         TilemapManager();
         static TilemapManager* _instance;

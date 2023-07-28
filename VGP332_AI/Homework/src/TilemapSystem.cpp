@@ -309,4 +309,31 @@ namespace tms
 
         return path;
     }
+
+    const AI::GridBasedGraph::Node* TilemapManager::GetClosestNode(int x, int y) const
+    {
+        const AI::GridBasedGraph::Node* clickedNode = nullptr;
+        float closestDist = FLT_MAX;
+
+        for (int r = 0; r < tilemapRows; ++r)
+        {
+            for (int c = 0; c < tilemapColumns; ++c)
+            {
+                const auto node = mGraph.GetNode(c, r);
+
+                // Calculate Distance Sqr
+                float distColumn = GetPixelPosition(node->column, node->row).x - GetMousePosition().x;
+                float distRow = GetPixelPosition(node->column, node->row).y - GetMousePosition().y;
+
+                float distanceSqr = distColumn * distColumn + distRow * distRow;
+
+                if (distanceSqr < closestDist)
+                {
+                    closestDist = distanceSqr;
+                    clickedNode = node;
+                }
+            }
+        }
+        return clickedNode;
+    }
 }

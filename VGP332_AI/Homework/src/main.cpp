@@ -8,9 +8,6 @@
 extern const int screenWidth = 720;
 extern const int screenHeight = 720;
 
-int startX = 1;
-int startY = 1;
-
 int main(void)
 {
     /*==================================================================================
@@ -29,6 +26,12 @@ int main(void)
     // Map
     assert(LoadResource::LoadVectorToMap("map.txt"));
 
+    // Testing Nodes
+    int startX = 1;
+    int startY = 1;
+    int endX = 2;
+    int endY = 2;
+
     /*==================================================================================
         GAME OBJECT
     ==================================================================================*/
@@ -39,49 +42,56 @@ int main(void)
         /*==================================================================================
             UPDATE GAME FRAME
         ==================================================================================*/
-
-        //BFS Test 
-        if (IsKeyDown(KEY_ONE))
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
-            path = TilemapManager::Get()->FindPathBFS(startX, startY, 5, 5);
+            int x = GetMousePosition().x;
+            int y = GetMousePosition().y;
+
+            std::cout << GetMousePosition().x << " " << GetMousePosition().y << std::endl;
+
+            auto node = TilemapManager::Get()->GetClosestNode(x, y);
+            if (node != nullptr)
+            {
+                startX = node->column;
+                startY = node->row;
+            }
+        }
+        
+        if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
+        {
+            int x = GetMousePosition().x;
+            int y = GetMousePosition().y;
+
+            std::cout << GetMousePosition().x << " " << GetMousePosition().y << std::endl;
+
+            auto node = TilemapManager::Get()->GetClosestNode(x, y);
+            if (node != nullptr)
+            {
+                endX = node->column;
+                endY = node->row;
+            }
+
+            std::cout << endX << " " << endY << std::endl;
         }
 
-        if (IsKeyDown(KEY_TWO))
+        if (IsKeyPressed(KEY_ONE))
         {
-            path = TilemapManager::Get()->FindPathBFS(startX, startY, 8, 8);
+            path = TilemapManager::Get()->FindPathBFS(startX, startY, endX, endY);
         }
 
-        // DFS Test
-        if (IsKeyDown(KEY_THREE))
+        if (IsKeyPressed(KEY_TWO))
         {
-            path = TilemapManager::Get()->FindPathDFS(startX, startY, 5, 5);
+            path = TilemapManager::Get()->FindPathDFS(startX, startY, endX, endY);
         }
 
-        if (IsKeyDown(KEY_FOUR))
+        if (IsKeyPressed(KEY_THREE))
         {
-            path = TilemapManager::Get()->FindPathDFS(startX, startY, 8, 8);
+            path = TilemapManager::Get()->FindPathDijkstra(startX, startY, endX, endY);
         }
 
-        // Dijkstra
-        if (IsKeyDown(KEY_FIVE))
+        if (IsKeyPressed(KEY_FOUR))
         {
-            path = TilemapManager::Get()->FindPathDijkstra(startX, startY, 5, 5);
-        }
-
-        if (IsKeyDown(KEY_SIX))
-        {
-            path = TilemapManager::Get()->FindPathDijkstra(startX, startY, 8, 8);
-        }
-
-        // AStar
-        if (IsKeyDown(KEY_SEVEN))
-        {
-            path = TilemapManager::Get()->FindPathAStar(startX, startY, 5, 5);
-        }
-
-        if (IsKeyDown(KEY_EIGHT))
-        {
-            path = TilemapManager::Get()->FindPathAStar(startX, startY, 8, 8);
+            path = TilemapManager::Get()->FindPathAStar(startX, startY, endX, endY);
         }
 
         /*==================================================================================
@@ -90,7 +100,13 @@ int main(void)
         BeginDrawing();
         ClearBackground(BLACK);
 
+        DrawText("KEY 1: BSF | KEY 2: DFS | KEY 3: Dijkstra | KEY 4: AStar", 10, 10, 20, PINK);
+
         draw::TileMap(Texture_Atlas);
+
+        // Draw startpoint and endpoint
+        DrawCircleLines((startX * 64.0f) + 72.0f, (startY * 64.0f) + 72.0f, 10, LIME);
+        DrawCircleLines((endX * 64.0f) + 72.0f, (endY * 64.0f) + 72.0f, 10, ORANGE);
 
         EndDrawing();
     }
