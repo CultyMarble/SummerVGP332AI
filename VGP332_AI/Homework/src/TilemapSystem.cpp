@@ -287,8 +287,8 @@ namespace tms
         auto getHeuristic = [](const GridBasedGraph::Node* neighbor, const GridBasedGraph::Node* endNode)->float
         {
             float D = 1.0f;
-            float dx = abs(neighbor->column - endNode->column);
-            float dy = abs(neighbor->row - endNode->row);
+            float dx = static_cast<float>(abs(neighbor->column - endNode->column));
+            float dy = static_cast<float>(abs(neighbor->row - endNode->row));
 
             return D * (dx + dy);
         };

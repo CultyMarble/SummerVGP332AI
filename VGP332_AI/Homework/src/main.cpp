@@ -105,8 +105,8 @@ int main(void)
         draw::TileMap(Texture_Atlas);
 
         // Draw startpoint and endpoint
-        DrawCircleLines((startX * 64.0f) + 72.0f, (startY * 64.0f) + 72.0f, 10, LIME);
-        DrawCircleLines((endX * 64.0f) + 72.0f, (endY * 64.0f) + 72.0f, 10, ORANGE);
+        DrawCircleLines(static_cast<int>(startX * 64.0f) + 72.0f, static_cast<int>(startY * 64.0f) + 72.0f, 10, LIME);
+        DrawCircleLines(static_cast<int>(endX * 64.0f) + 72.0f, static_cast<int>(endY * 64.0f) + 72.0f, 10, ORANGE);
 
         EndDrawing();
     }

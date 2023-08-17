@@ -7,3 +7,6 @@
 #include "DFS.h"
 #include "Dijkstra.h"
 #include "AStar.h"
+
+#include "State.h"
+#include "StateMachine.h"
