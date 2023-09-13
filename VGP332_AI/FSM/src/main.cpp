@@ -1,10 +1,8 @@
 #pragma once
-#include <iostream>
-#include <stdio.h>
-
+#include "raylib.h"
 #include "AI.h"
 
-#include "raylib.h"
+#include "Miner.h"
 
 int main(void)
 {
@@ -12,8 +10,8 @@ int main(void)
         INITIALIZATION
     ==================================================================================*/
     // Window & Devices
-    const int screenWidth = 720;
-    const int screenHeight = 720;
+    const int screenWidth = 300;
+    const int screenHeight = 50;
 
     InitWindow(screenWidth, screenHeight, "VGP332 - AI");
     SetTargetFPS(144);
@@ -26,6 +24,13 @@ int main(void)
     /*==================================================================================
         GAME OBJECT
     ==================================================================================*/
+    Miner miner;
+
+    /*==================================================================================
+        GAME INIT
+    ==================================================================================*/
+    miner.Initialize();
+
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -33,6 +38,10 @@ int main(void)
         /*==================================================================================
             UPDATE GAME FRAME
         ==================================================================================*/
+        if (IsKeyPressed(KEY_SPACE))
+        {
+            miner.Update();
+        }
 
         /*==================================================================================
             UPDATE DRAW FRAME
@@ -46,7 +55,7 @@ int main(void)
     /*==================================================================================
         DE-INITIALIZATION
     ==================================================================================*/
-
+    miner.Terminate();
 
     CloseWindow();
     return EXIT_SUCCESS;

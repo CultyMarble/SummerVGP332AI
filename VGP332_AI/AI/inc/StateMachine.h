@@ -13,7 +13,7 @@ namespace AI
         template<class NewState>
         void AddState()
         {
-            static_assert(std::is_base_of_v<State<AgentType>, NewState>), "StateMachine: can only add statetypes");
+            static_assert((std::is_base_of_v<State<AgentType>, NewState>), "StateMachine: can only add statetypes");
             mStates.push_back(std::make_unique<NewState>());
         }
 
