@@ -21,12 +21,21 @@
     <ClCompile Include="src\Miner.cpp">
       <Filter>src\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\SCV.cpp">
+      <Filter>src\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Miner.h">
       <Filter>src\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\MinerStates.h">
+      <Filter>src\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SCV.h">
+      <Filter>src\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SCVStates.h">
       <Filter>src\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

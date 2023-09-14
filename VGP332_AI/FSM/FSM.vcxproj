@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Miner.cpp" />
+    <ClCompile Include="src\SCV.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AI\AI.vcxproj">
@@ -30,6 +31,8 @@
   <ItemGroup>
     <ClInclude Include="src\Miner.h" />
     <ClInclude Include="src\MinerStates.h" />
+    <ClInclude Include="src\SCV.h" />
+    <ClInclude Include="src\SCVStates.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -2,7 +2,8 @@
 #include "raylib.h"
 #include "AI.h"
 
-#include "Miner.h"
+#include "SCV.h"
+
 
 int main(void)
 {
@@ -10,8 +11,8 @@ int main(void)
         INITIALIZATION
     ==================================================================================*/
     // Window & Devices
-    const int screenWidth = 300;
-    const int screenHeight = 50;
+    const int screenWidth = 860;
+    const int screenHeight = 200;
 
     InitWindow(screenWidth, screenHeight, "VGP332 - AI");
     SetTargetFPS(144);
@@ -20,17 +21,15 @@ int main(void)
         LOAD RESOURCES
     ==================================================================================*/
 
-
     /*==================================================================================
         GAME OBJECT
     ==================================================================================*/
-    Miner miner;
+    SCV testSCV;
 
     /*==================================================================================
         GAME INIT
     ==================================================================================*/
-    miner.Initialize();
-
+    testSCV.Initialize();
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -40,14 +39,28 @@ int main(void)
         ==================================================================================*/
         if (IsKeyPressed(KEY_SPACE))
         {
-            miner.Update();
+            testSCV.Update();
+        }
+
+        if (IsKeyPressed(KEY_ENTER))
+        {
+            testSCV.ToggleIsInDanger();
         }
 
         /*==================================================================================
             UPDATE DRAW FRAME
         ==================================================================================*/
         BeginDrawing();
-        ClearBackground(GRAY);
+        ClearBackground(BLACK);
+
+        DrawText("Note: Please Keep this window active and press space to update the SCV behavior!", 10, 10, 20, RED);
+        DrawText("Behaviour Summary:", 10, 30, 20, WHITE);
+        DrawText("SCV will continously mine for mineral and contruct building", 30, 50, 20, GRAY);
+        DrawText("if there are at least 200 mineral in command center.", 30, 70, 20, GRAY);
+        DrawText("Press Enter to Toggle In Danger Mode", 30, 90, 20, GRAY);
+        DrawText("While In Danger: SCV will drop all tasks and run away forever!", 30, 110, 20, GRAY);
+        DrawText("When out of Danger Mode: SCV will continuous the prior task which it dropped!", 30, 130, 20, GRAY);
+        DrawText("All Behaviour is output in window console. Please read carefully!!!", 30, 150, 20, GRAY);
 
         EndDrawing();
     }
@@ -55,7 +68,7 @@ int main(void)
     /*==================================================================================
         DE-INITIALIZATION
     ==================================================================================*/
-    miner.Terminate();
+    testSCV.Terminate();
 
     CloseWindow();
     return EXIT_SUCCESS;
